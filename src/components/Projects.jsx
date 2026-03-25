@@ -39,6 +39,17 @@ const PROJECTS = [
     visual: 'chroma',
     link: 'https://www.arrowplumbing.net/',
   },
+  {
+    id: 4,
+    title: 'UPCOMING_BUILD',
+    category: 'Next Project',
+    desc: 'An upcoming visual-first product experience built with React, Next.js, TypeScript, Tailwind, and motion-rich UI interactions.',
+    tags: ['React', 'Next.js', 'TypeScript', 'Tailwind', 'GSAP'],
+    color: '#00FCC0',
+    year: '2026',
+    visual: 'signal',
+    link: '',
+  },
 ];
 
 function ProjectCard({ project, index }) {
@@ -128,9 +139,15 @@ function ProjectCard({ project, index }) {
             <span key={tag} className="project-card__tag">{tag}</span>
           ))}
         </div>
-        <a href={project.link} target="_blank" rel="noopener" className="project-card__btn">
-          VIEW PROJECT <span>→</span>
-        </a>
+        {project.link ? (
+          <a href={project.link} target="_blank" rel="noopener" className="project-card__btn">
+            VIEW PROJECT <span>→</span>
+          </a>
+        ) : (
+          <span className="project-card__btn project-card__btn--disabled">
+            COMING SOON <span>+</span>
+          </span>
+        )}
       </div>
     </div>
   );
@@ -138,6 +155,7 @@ function ProjectCard({ project, index }) {
 
 export default function Projects() {
   const titleRef = useRef();
+  const projectCount = String(PROJECTS.length).padStart(2, '0');
 
   useEffect(() => {
     gsap.fromTo(titleRef.current,
@@ -158,9 +176,9 @@ export default function Projects() {
         <div className="projects__label">DEPLOYMENT / 2024</div>
         <h2 className="projects__title">PROJECTS</h2>
         <div className="projects__count">
-          <span className="projects__count-num">03</span>
+          <span className="projects__count-num">{projectCount}</span>
           <span className="projects__count-sep">/</span>
-          <span className="projects__count-total">03</span>
+          <span className="projects__count-total">{projectCount}</span>
         </div>
       </div>
 

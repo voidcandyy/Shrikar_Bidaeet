@@ -248,6 +248,46 @@
   animation: rotate-slow 25s linear infinite reverse;
 }
 
+/* ---- SIGNAL_FORGE — teal reactor grid ---- */
+.project-card__visual--signal {
+  background:
+    radial-gradient(circle at 50% 50%, rgba(0, 252, 192, 0.22), transparent 28%),
+    radial-gradient(circle at 22% 78%, rgba(0, 212, 255, 0.28), transparent 34%),
+    radial-gradient(circle at 82% 24%, rgba(123, 47, 255, 0.24), transparent 32%),
+    linear-gradient(180deg, #06111b 0%, #050510 100%);
+}
+
+.project-card__visual--signal .project-card__mesh {
+  background:
+    linear-gradient(rgba(0, 252, 192, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 212, 255, 0.08) 1px, transparent 1px),
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.1), transparent 18%);
+  background-size: 44px 44px, 44px 44px, 100% 100%;
+  animation: mesh-drift 12s ease-in-out infinite alternate;
+}
+
+.project-card__visual--signal::before {
+  content: '';
+  position: absolute;
+  inset: 16%;
+  z-index: 2;
+  border: 1px solid rgba(0, 252, 192, 0.22);
+  box-shadow:
+    0 0 24px rgba(0, 252, 192, 0.12),
+    inset 0 0 28px rgba(0, 212, 255, 0.08);
+}
+
+.project-card__visual--signal::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(0, 252, 192, 0.12), transparent 22%),
+    linear-gradient(135deg, transparent 35%, rgba(0, 212, 255, 0.1) 50%, transparent 65%);
+  animation: astral-pulse 4.5s ease-in-out infinite;
+}
+
 
 /* ---- ASTRAL_GRID — teal data constellation ---- */
 .project-card__visual--astral {
@@ -387,6 +427,16 @@
 
 .project-card__btn:hover span {
   transform: translateX(4px);
+}
+
+.project-card__btn--disabled {
+  color: var(--accent);
+  opacity: 0.78;
+  cursor: default;
+}
+
+.project-card__btn--disabled span {
+  transform: none;
 }
 
 /* ---- Tablet ---- */
