@@ -301,6 +301,10 @@
   align-items: flex-start;
 }
 
+.contact__honeypot {
+  display: none;
+}
+
 .contact__blink {
   color: var(--neon-blue);
   animation: blink 1s step-end infinite;
@@ -345,6 +349,15 @@
 .contact__submit--sending {
   opacity: 0.7;
   cursor: wait;
+}
+
+.contact__form-status {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  line-height: 1.8;
+  letter-spacing: 0.06em;
+  color: var(--text-hud);
+  text-shadow: 0 0 12px rgba(144, 164, 171, 0.12);
 }
 
 .contact__submit-progress {
@@ -409,6 +422,7 @@
   font-weight: 500;
   color: var(--text-hud);
   text-shadow: 0 0 12px rgba(144, 164, 171, 0.16);
+  text-decoration: none;
 }
 
 /* Footer */

@@ -231,7 +231,7 @@ export default function About() {
             ))}
           </div>
 
-          <a href="/resume/ShrikarBidaeetResume.pdf" download className="about__animate about__download">
+          <a href="/resume/Shrikar_Bidaeet.pdf" download className="about__animate about__download">
             DOWNLOAD RESUME
             <span className="about__download-icon">↓</span>
           </a>

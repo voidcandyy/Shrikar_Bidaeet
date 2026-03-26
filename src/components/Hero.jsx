@@ -48,7 +48,7 @@ export default function Hero() {
       <div className="hero__content">
         <div className="hero__badge">
           <span className="hero__badge-dot"></span>
-          FRONTEND_DEV // V1.7
+          FRONTEND_DEV // V2+
         </div>
 
         <h1 ref={nameRef} className="hero__name">

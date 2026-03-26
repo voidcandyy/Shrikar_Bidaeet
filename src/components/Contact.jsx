@@ -5,6 +5,9 @@ import './Contact.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
+const CONTACT_EMAIL = 'shrikarbidaeet83@gmail.com';
+const FORM_ENDPOINT = `https://formsubmit.co/${CONTACT_EMAIL}`;
+
 const LOG_MESSAGES = [
   { text: 'INITIALIZING SECURE CHANNEL...', delay: 0 },
   { text: 'ENCRYPTION: AES-256-GCM', delay: 0.5 },
@@ -18,7 +21,7 @@ const SOCIALS = [
   { name: 'GITHUB', icon: '{ }', url: 'https://github.com/shrikarbidaeet83?tab=repositories' },
   { name: 'LINKEDIN', icon: '◈', url: 'https://www.linkedin.com/in/shrikarbidaeet/' },
   { name: 'TWITTER', icon: '✦', url: 'https://x.com/Shrikar_bidaeet' },
-  { name: 'EMAIL', icon: '◉', url: 'mailto:shrikar@example.com' },
+  { name: 'EMAIL', icon: '◉', url: `mailto:${CONTACT_EMAIL}` },
 ];
 
 export default function Contact() {
@@ -28,6 +31,13 @@ export default function Contact() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [isSending, setSending] = useState(false);
   const [cursorField, setCursorField] = useState(null);
+  const [statusMessage, setStatusMessage] = useState('');
+
+  const baseUrl = typeof window !== 'undefined'
+    ? `${window.location.origin}${window.location.pathname}`
+    : '';
+  const formUrl = baseUrl ? `${baseUrl}#contact` : '';
+  const successUrl = baseUrl ? `${baseUrl}?contact=success#contact` : '';
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -49,6 +59,21 @@ export default function Contact() {
   }, []);
 
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('contact') !== 'success') return;
+
+    setStatusMessage(`Transmission complete. Notifications are routed to ${CONTACT_EMAIL}.`);
+    setLogs((prev) => [
+      ...prev,
+      `> INBOX ROUTED: ${CONTACT_EMAIL.toUpperCase()}`,
+      '> TRANSMISSION COMPLETE ✓',
+    ]);
+    window.history.replaceState({}, document.title, `${baseUrl}#contact`);
+  }, [baseUrl]);
+
+  useEffect(() => {
     if (terminalRef.current) {
       gsap.fromTo(
         terminalRef.current.querySelectorAll('.contact__animate'),
@@ -68,15 +93,10 @@ export default function Contact() {
     }
   }, []);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = () => {
     setSending(true);
-    setLogs((prev) => [...prev, `> TRANSMITTING TO: ${formData.email}...`]);
-    setTimeout(() => {
-      setLogs((prev) => [...prev, '> TRANSMISSION COMPLETE ✓']);
-      setSending(false);
-      setFormData({ name: '', email: '', message: '' });
-    }, 2000);
+    setStatusMessage(`Routing submission to ${CONTACT_EMAIL}...`);
+    setLogs((prev) => [...prev, `> ROUTING SUBMISSION TO: ${CONTACT_EMAIL.toUpperCase()}...`]);
   };
 
   return (
@@ -148,18 +168,32 @@ export default function Contact() {
 
           <div className="contact__terminal-scanline"></div>
 
-          <form className="contact__form" onSubmit={handleSubmit}>
+          <form className="contact__form" action={FORM_ENDPOINT} method="POST" onSubmit={handleSubmit}>
+            <input type="hidden" name="_subject" value="New portfolio contact submission" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_next" value={successUrl} />
+            <input type="hidden" name="_url" value={formUrl} />
+            <input
+              type="text"
+              name="_honey"
+              className="contact__honeypot"
+              tabIndex="-1"
+              autoComplete="off"
+            />
+
             <div className="contact__field">
               <label className="contact__field-label">SUBJECT_NAME</label>
               <div className={`contact__field-input ${cursorField === 'name' ? 'contact__field-input--active' : ''}`}>
                 <span className="contact__field-prefix">&gt;</span>
                 <input
                   type="text"
+                  name="name"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   onFocus={() => setCursorField('name')}
                   onBlur={() => setCursorField(null)}
                   placeholder="ENTER IDENTIFIER"
+                  autoComplete="name"
                   required
                 />
                 {cursorField === 'name' && <span className="contact__blink">█</span>}
@@ -172,11 +206,13 @@ export default function Contact() {
                 <span className="contact__field-prefix">&gt;</span>
                 <input
                   type="email"
+                  name="email"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   onFocus={() => setCursorField('email')}
                   onBlur={() => setCursorField(null)}
                   placeholder="NAME@NETWORK.COM"
+                  autoComplete="email"
                   required
                 />
                 {cursorField === 'email' && <span className="contact__blink">█</span>}
@@ -188,6 +224,7 @@ export default function Contact() {
               <div className={`contact__field-input contact__field-input--textarea ${cursorField === 'msg' ? 'contact__field-input--active' : ''}`}>
                 <span className="contact__field-prefix">&gt;</span>
                 <textarea
+                  name="message"
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   onFocus={() => setCursorField('msg')}
@@ -213,6 +250,8 @@ export default function Contact() {
                 <>INITIATE SEND <span>⟩</span></>
               )}
             </button>
+
+            <p className="contact__form-status">{statusMessage || `Incoming submissions are routed to ${CONTACT_EMAIL}.`}</p>
           </form>
         </div>
       </div>
@@ -225,10 +264,10 @@ export default function Contact() {
             <span className="contact__social-name">{social.name}</span>
           </a>
         ))}
-        <div className="contact__social-email">
+        <a href={`mailto:${CONTACT_EMAIL}`} className="contact__social-email">
           <span className="contact__social-icon">◉</span>
-          HELLO@KINETIC.OS
-        </div>
+          {CONTACT_EMAIL}
+        </a>
       </div>
 
       <div className="contact__footer">
