@@ -78,7 +78,9 @@
   font-family: var(--font-mono);
   font-size: 0.55rem;
   letter-spacing: 0.1em;
-  color: var(--text-dim);
+  font-weight: 500;
+  color: var(--text-hud);
+  text-shadow: 0 0 12px rgba(144, 164, 171, 0.16);
 }
 
 .contact__avail-value {
@@ -138,7 +140,8 @@
   font-family: var(--font-mono);
   font-size: 0.55rem;
   letter-spacing: 0.1em;
-  color: var(--text-dim);
+  font-weight: 500;
+  color: var(--text-hud);
 }
 
 .contact__log-body {
@@ -148,7 +151,9 @@
   font-family: var(--font-mono);
   font-size: 0.6rem;
   line-height: 1.8;
-  color: var(--text-dim);
+  font-weight: 500;
+  color: var(--text-hud);
+  text-shadow: 0 0 12px rgba(144, 164, 171, 0.14);
 }
 
 .contact__log-line {
@@ -198,14 +203,18 @@
   font-family: var(--font-mono);
   font-size: 0.55rem;
   letter-spacing: 0.08em;
-  color: var(--text-muted);
+  font-weight: 500;
+  color: var(--text-hud);
+  text-shadow: 0 0 12px rgba(144, 164, 171, 0.16);
   flex: 1;
 }
 
 .contact__terminal-id {
   font-family: var(--font-mono);
   font-size: 0.5rem;
-  color: var(--text-dim);
+  font-weight: 500;
+  color: var(--text-hud);
+  text-shadow: 0 0 12px rgba(144, 164, 171, 0.16);
 }
 
 .contact__terminal-scanline {
@@ -238,7 +247,9 @@
   font-family: var(--font-mono);
   font-size: 0.55rem;
   letter-spacing: 0.1em;
-  color: var(--text-dim);
+  font-weight: 500;
+  color: var(--text-hud);
+  text-shadow: 0 0 12px rgba(144, 164, 171, 0.14);
   margin-bottom: 6px;
 }
 
@@ -278,7 +289,7 @@
 
 .contact__field-input input::placeholder,
 .contact__field-input textarea::placeholder {
-  color: var(--text-dim);
+  color: var(--text-hud);
 }
 
 .contact__field-input textarea {
@@ -395,7 +406,9 @@
   font-family: var(--font-mono);
   font-size: 0.65rem;
   letter-spacing: 0.08em;
-  color: var(--text-dim);
+  font-weight: 500;
+  color: var(--text-hud);
+  text-shadow: 0 0 12px rgba(144, 164, 171, 0.16);
 }
 
 /* Footer */
@@ -408,7 +421,9 @@
   font-family: var(--font-mono);
   font-size: 0.5rem;
   letter-spacing: 0.08em;
-  color: var(--text-dim);
+  font-weight: 500;
+  color: var(--text-hud);
+  text-shadow: 0 0 12px rgba(144, 164, 171, 0.14);
 }
 
 /* ---- Tablet ---- */

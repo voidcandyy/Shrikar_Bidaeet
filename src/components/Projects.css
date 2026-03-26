@@ -44,7 +44,9 @@
 .projects__count {
   font-family: var(--font-mono);
   font-size: 0.75rem;
-  color: var(--text-dim);
+  font-weight: 500;
+  color: var(--text-hud);
+  text-shadow: 0 0 12px rgba(144, 164, 171, 0.18);
   margin-bottom: 12px;
 }
 
@@ -103,7 +105,9 @@
   font-family: var(--font-mono);
   font-size: 0.6rem;
   letter-spacing: 0.14em;
-  color: var(--text-dim);
+  font-weight: 500;
+  color: var(--text-hud);
+  text-shadow: 0 0 12px rgba(144, 164, 171, 0.16);
   text-transform: uppercase;
 }
 

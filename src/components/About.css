@@ -64,7 +64,9 @@
   gap: 2px;
   font-family: var(--font-mono);
   font-size: 0.55rem;
-  color: var(--text-dim);
+  font-weight: 500;
+  color: var(--text-hud);
+  text-shadow: 0 0 12px rgba(144, 164, 171, 0.18);
   letter-spacing: 0.08em;
 }
 
@@ -131,7 +133,9 @@
   font-family: var(--font-mono);
   font-size: 0.6rem;
   letter-spacing: 0.1em;
-  color: var(--text-dim);
+  font-weight: 500;
+  color: var(--text-hud);
+  text-shadow: 0 0 12px rgba(144, 164, 171, 0.18);
   margin-bottom: 14px;
 }
 
@@ -279,7 +283,9 @@
   position: absolute;
   font-family: var(--font-mono);
   font-size: 0.55rem;
-  color: var(--text-dim);
+  font-weight: 500;
+  color: var(--text-hud);
+  text-shadow: 0 0 12px rgba(144, 164, 171, 0.16);
   letter-spacing: 0.08em;
   display: flex;
   flex-direction: column;

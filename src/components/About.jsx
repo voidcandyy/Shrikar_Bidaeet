@@ -201,7 +201,7 @@ export default function About() {
           <p className="about__animate about__role">Frontend Developer</p>
 
           <p className="about__animate about__bio">
-            I am a front-end developer with 1.7+ years of professional experience
+            I am a front-end developer with 2+ years of professional experience
             building responsive and user-friendly websites. I specialize in
             frontend development using React, JavaScript, HTML, and CSS,
             with working knowledge of the MERN stack.

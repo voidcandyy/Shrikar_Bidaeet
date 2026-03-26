@@ -22,7 +22,8 @@
   --text-primary: #e3e0f3;
   --text-secondary: #bbc9cf;
   --text-muted: #859398;
-  --text-dim: #3c494e;
+  --text-dim: #56676d;
+  --text-hud: #90a4ab;
 
   /* Gradients */
   --gradient-blue-purple: linear-gradient(135deg, #00D4FF, #7B2FFF);
